@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#072B36" />
+  <title>Sagar Ephemeris 2026 — Sidereal Ephemeris & Panchanga Reference</title>
+  <meta name="description" content="Sagar Ephemeris 2026 is a classical sidereal almanac and computational reference for serious Jyotisha practice: daily nirayana longitudes, tithi, nakshatra, yoga, karana, Rahu–Ketu motion, eclipses, and more — referenced to IST." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sagar Ephemeris 2026" />
+  <meta property="og:description" content="Sidereal calculations with Panchanga, Muhurtha & other formulae (Mean Chitrapaksha Ayanamsa)." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/cover.jpeg" />
+
+  <style>
+    /* ---------- Apple-style minimal, golden-ratio spacing ---------- */
+    :root{
+      /* Palette extracted from cover (deep teal, midnight blue, cosmic gold, stardust glow) */
+      --bg: #061F27;              /* midnight teal */
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.58);
+      --stroke: rgba(255,255,255,.14);
+
+      --teal: #0E3C4A;
+      --midnight: #072B36;
+      --gold: #D8B15A;
+      --gold2: #F2D58B;
+      --stardust: #E7F5FF;
+
+      --shadow: 0 28px 80px rgba(0,0,0,.50);
+
+      /* Golden ratio scale */
+      --phi: 1.618;
+      --space-0: 8px;
+      --space-1: 13px;   /* ~8*phi */
+      --space-2: 21px;   /* ~13*phi */
+      --space-3: 34px;   /* ~21*phi */
+      --space-4: 55px;   /* ~34*phi */
+      --space-5: 89px;   /* ~55*phi */
+      --space-6: 144px;  /* ~89*phi */
+
+      --radius-sm: 14px;
+      --radius: 22px;
+      --radius-lg: 30px;
+
+      --max: 1160px;
+      --max-narrow: 820px;
+
+      --h1: clamp(40px, 4.2vw, 64px);
+      --h2: clamp(26px, 2.4vw, 36px);
+      --h3: clamp(18px, 1.5vw, 22px);
+      --p:  clamp(16px, 1.25vw, 18px);
+      --small: 13px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, rgba(216,177,90,.18), transparent 62%),
+        radial-gradient(900px 500px at 10% 10%, rgba(231,245,255,.09), transparent 60%),
+        radial-gradient(1000px 700px at 80% 80%, rgba(14,60,74,.24), transparent 55%),
+        linear-gradient(180deg, #04181f 0%, var(--bg) 55%, #04181f 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid rgba(216,177,90,.8);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .wrap{ width: min(var(--max), calc(100% - 2*var(--space-3))); margin: 0 auto; }
+    .wrap.narrow{ width: min(var(--max-narrow), calc(100% - 2*var(--space-3))); }
+
+    /* ---------- Top nav (Jakob's Law: familiar patterns) ---------- */
+    .nav{
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(6,31,39,.85), rgba(6,31,39,.55));
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-2) 0;
+      gap: var(--space-2);
+    }
+    .brand{
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 600; letter-spacing: .2px;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
+      box-shadow: 0 0 24px rgba(216,177,90,.45);
+    }
+    .links{
+      display: flex; align-items: center; gap: clamp(10px, 2.2vw, 22px);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .links a{ padding: 8px 10px; border-radius: 12px; }
+    .links a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    .cta{
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(216,177,90,.35);
+      background: linear-gradient(180deg, rgba(216,177,90,.18), rgba(216,177,90,.08));
+      color: var(--text);
+      font-weight: 600;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+    .cta:hover{
+      transform: translateY(-1px);
+      border-color: rgba(216,177,90,.55);
+      background: linear-gradient(180deg, rgba(216,177,90,.22), rgba(216,177,90,.10));
+    }
+
+    /* ---------- Hero (Fitts + Von Restorff + Visual Hierarchy) ---------- */
+    header.hero{
+      padding: var(--space-6) 0 var(--space-5);
+    }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.15fr .85fr; /* golden-ish balance */
+      gap: var(--space-5);
+      align-items: center;
+    }
+    .kicker{
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    .kicker strong{ color: var(--stardust); font-weight: 600; }
+    h1{
+      font-size: var(--h1);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: var(--space-2) 0 var(--space-2);
+    }
+    .sub{
+      font-size: var(--p);
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 var(--space-3);
+    }
+    .hero-actions{
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+    .ghost{
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .ghost:hover{ background: rgba(255,255,255,.06); }
+
+    .micro{
+      display: flex; flex-wrap: wrap; gap: 10px 14px;
+      margin-top: var(--space-3);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .micro span{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+    }
+    .check{
+      width: 16px; height: 16px;
+      border-radius: 999px;
+      background: rgba(216,177,90,.14);
+      border: 1px solid rgba(216,177,90,.35);
+      display: inline-grid; place-items: center;
+      box-shadow: 0 0 22px rgba(216,177,90,.25);
+      flex: 0 0 auto;
+    }
+    .check svg{ width: 10px; height: 10px; }
+
+    .cover-card{
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+    }
+    .cover-card img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .cover-meta{
+      padding: var(--space-2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .pill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* ---------- Sections ---------- */
+    section{
+      padding: var(--space-5) 0;
+    }
+    .section-head{
+      display: grid;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    h2{
+      font-size: var(--h2);
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .lead{
+      font-size: var(--p);
+      color: var(--muted);
+      margin: 0;
+      max-width: 70ch;
+    }
+
+    .grid3{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: var(--space-3);
+      box-shadow: 0 16px 44px rgba(0,0,0,.22);
+      min-height: 100%;
+    }
+    .card h3{
+      font-size: var(--h3);
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .card p{ margin: 0; color: var(--muted); font-size: 15px; }
+
+    .icon{
+      width: 44px; height: 44px; border-radius: 16px;
+      display: grid; place-items: center;
+      background: rgba(216,177,90,.10);
+      border: 1px solid rgba(216,177,90,.22);
+      margin-bottom: var(--space-2);
+      box-shadow: 0 0 34px rgba(216,177,90,.16);
+    }
+    .icon svg{ width: 22px; height: 22px; opacity: .95; }
+
+    /* ---------- Comparison strip ---------- */
+    .strip{
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius-lg);
+      background: radial-gradient(900px 320px at 20% 20%, rgba(216,177,90,.16), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: var(--space-4);
+      box-shadow: var(--shadow);
+    }
+    .strip-grid{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: var(--space-4);
+      align-items: center;
+    }
+    .bullets{
+      margin: 0; padding: 0; list-style: none;
+      display: grid; gap: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .bullets li{
+      display: grid; grid-template-columns: 18px 1fr;
+      gap: 10px; align-items: start;
+    }
+    .bullets .mark{
+      width: 18px; height: 18px; border-radius: 999px;
+      background: rgba(231,245,255,.08);
+      border: 1px solid rgba(231,245,255,.20);
+      display: grid; place-items: center;
+      margin-top: 2px;
+    }
+
+    /* ---------- FAQ (Progressive disclosure) ---------- */
+    details{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: var(--space-2) var(--space-3);
+    }
+    details + details{ margin-top: 12px; }
+    summary{
+      cursor: pointer;
+      list-style: none;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      padding: 10px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    summary::-webkit-details-marker{ display: none; }
+    .chev{
+      width: 18px; height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      display: grid; place-items: center;
+      color: var(--muted);
+      flex: 0 0 auto;
+      transition: transform .2s ease;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    details p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 85ch;
+    }
+
+    /* ---------- Footer ---------- */
+    footer{
+      padding: var(--space-5) 0 var(--space-4);
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .foot-grid{
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+    .fineprint{ max-width: 90ch; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .strip-grid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      header.hero{ padding: var(--space-5) 0 var(--space-4); }
+      .links{ display:none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; }
+    }
+    html{ scroll-behavior: smooth; }
+
+  </style>
+
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Sagar Ephemeris 2026",
+    "author": {"@type":"Person", "name":"Sandeep Venkatesh"},
+    "bookEdition": "2026",
+    "inLanguage": "en",
+    "about": ["Sidereal ephemeris", "Panchanga", "Muhurtha", "Jyotisha"],
+    "description": "A classical sidereal almanac and computational reference: daily nirayana longitudes, tithi, nakshatra, yoga, karana, Rahu–Ketu motion, eclipses, and more — consistently referenced to IST (Mean Chitrapaksha Ayanamsa)."
+  }
+  </script>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap nav-inner" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Sagar Ephemeris 2026 home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Sagar Ephemeris 2026</span>
+      </a>
+
+      <div class="links" aria-label="Sections">
+        <a href="#why">Why it matters</a>
+        <a href="#inside">What’s inside</a>
+        <a href="#use">Who it’s for</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <!-- Replace the href with your preferred buy link (Amazon / publisher / WhatsApp) -->
+      <a class="cta" href="#buy" aria-label="Jump to buy section">
+        Get the book
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">
+            <strong>Mean Chitrapaksha Ayanamsa</strong>
+            <span aria-hidden="true">•</span>
+            <span>Referenced to IST</span>
+          </div>
+
+          <h1>Sidereal ephemeris you can trust. Built for daily work.</h1>
+
+          <p class="sub">
+            <strong>Sagar Ephemeris 2026</strong> is a meticulous sidereal almanac and computational reference for serious
+            Jyotisha practice—designed to be transparent, reproducible, and practical at the desk.
+          </p>
+
+          <div class="hero-actions">
+            <a class="cta" href="#buy">Get the book</a>
+            <a class="ghost" href="#inside">Explore contents</a>
+          </div>
+
+          <div class="micro" aria-label="Key highlights">
+            <span><span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Daily tithi, nakshatra, yoga, karana</span>
+            <span><span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Nirayana longitudes & retrograde intervals</span>
+            <span><span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Rahu–Ketu motion, eclipses, phenomena</span>
+          </div>
+        </div>
+
+        <div class="cover-card" aria-label="Book cover">
+          <img src="assets/cover.jpeg" alt="Sagar Ephemeris 2026 book cover" />
+          <div class="cover-meta">
+            <span>Hardcover • 2026 Edition</span>
+            <span class="pill">Sidereal reference</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="why">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <h2>Why it matters</h2>
+          <p class="lead">
+            When you’re timing decisions, checking transits, or teaching fundamentals, you need tables that are
+            consistent and easy to verify—without guesswork.
+          </p>
+        </div>
+
+        <div class="grid3" role="list">
+          <div class="card" role="listitem">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Clarity over complexity</h3>
+            <p>
+              A practical daily reference: essentials first, with enough structure to trace how values are derived.
+            </p>
+          </div>
+
+          <div class="card" role="listitem">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4L20 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Desk-ready accuracy</h3>
+            <p>
+              Tables are organized for quick scanning during readings—built to support repeatable checks and comparisons.
+            </p>
+          </div>
+
+          <div class="card" role="listitem">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.6 4.1L18.8 21 12 16.9 5.2 21l2.4-7.9L2 9h7l3-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>A single yearly atlas</h3>
+            <p>
+              Beyond day tables: key celestial events and integrated formulae so your workflow stays in one place.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inside">
+      <div class="wrap">
+        <div class="strip">
+          <div class="strip-grid">
+            <div>
+              <h2>What’s inside</h2>
+              <p class="lead" style="margin-top: var(--space-2)">
+                A comprehensive sidereal ephemeris with Panchanga and Muhurtha sections—plus supporting computational material.
+              </p>
+
+              <ul class="bullets" style="margin-top: var(--space-3)">
+                <li>
+                  <span class="mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span>Daily nirayana planetary longitudes with tithi, nakshatra, yoga and karana tables.</span>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span>Rahu–Ketu motion, retrograde intervals, stationary points, and eclipse catalogues.</span>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span>Muhurtha tables: key yogas and timing aids for direct use without auxiliary manuals.</span>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span>Supporting computational grammar: Panchanga derivations and classical formulae for auditability.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" aria-label="Quick snapshot">
+              <h3>Quick snapshot</h3>
+              <p style="margin-top: 8px">
+                <span style="color: var(--text); font-weight: 650">A yearly reference</span>
+                crafted for <span style="color: var(--text); font-weight: 650">serious practitioners, scholars, and teachers</span>.
+              </p>
+
+              <div style="height: var(--space-2)"></div>
+
+              <div style="display:grid; gap: 12px; color: var(--muted); font-size: 15px;">
+                <div style="display:flex; justify-content:space-between; gap: 14px;">
+                  <span>Reference time</span><span style="color: var(--text); font-weight: 650">IST</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; gap: 14px;">
+                  <span>Ayanamsa</span><span style="color: var(--text); font-weight: 650">Mean Chitrapaksha</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; gap: 14px;">
+                  <span>Focus</span><span style="color: var(--text); font-weight: 650">Sidereal tables</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; gap: 14px;">
+                  <span>Format</span><span style="color: var(--text); font-weight: 650">Hardcover</span>
+                </div>
+              </div>
+
+              <div style="height: var(--space-3)"></div>
+
+              <a class="cta" href="#buy" style="width:100%; justify-content:center;">Get the book</a>
+              <div style="height: 10px"></div>
+              <a class="ghost" href="#faq" style="width:100%; justify-content:center;">Read FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="use">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <h2>Who it’s for</h2>
+          <p class="lead">
+            Designed to reduce cognitive load (familiar structure, fast scanning) while still supporting deeper verification.
+          </p>
+        </div>
+
+        <div class="grid3" role="list">
+          <div class="card" role="listitem">
+            <h3>Practitioners</h3>
+            <p>Daily workflow support for transits, Panchanga checks, and time selection.</p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Teachers</h3>
+            <p>Clean, repeatable reference tables that help students learn consistent methods.</p>
+          </div>
+          <div class="card" role="listitem">
+            <h3>Researchers</h3>
+            <p>Integrated computational material for reviewing methods and validating outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="buy">
+      <div class="wrap narrow">
+        <div class="strip">
+          <div class="strip-grid">
+            <div>
+              <h2>Get Sagar Ephemeris 2026</h2>
+              <p class="lead" style="margin-top: var(--space-2)">
+                Replace the buttons below with your actual purchase/WhatsApp links.
+                Keep a single primary action to respect Hick’s Law.
+              </p>
+
+              <div class="hero-actions" style="margin-top: var(--space-3)">
+                <!-- Replace with your real links -->
+                <a class="cta" href="https://example.com/buy" target="_blank" rel="noopener">Buy online</a>
+                <a class="ghost" href="https://wa.me/?text=I%20want%20Sagar%20Ephemeris%202026" target="_blank" rel="noopener">Order on WhatsApp</a>
+              </div>
+
+              <div class="micro" style="margin-top: var(--space-3)">
+                <span>Secure checkout (if supported by your store)</span>
+                <span>Ships as available</span>
+                <span>No email collection on this page</span>
+              </div>
+            </div>
+
+            <div class="card" aria-label="Publisher info">
+              <h3>Publisher</h3>
+              <p style="margin-top: 8px">
+                <span style="color: var(--text); font-weight: 650">Sagar Publications</span><br/>
+                <span style="color: var(--muted)">
+                  Add official store links / distributor details here for clarity.
+                </span>
+              </p>
+
+              <div style="height: var(--space-2)"></div>
+
+              <p style="color: var(--muted); font-size: 15px; margin:0">
+                Tip: keep purchase options minimal. If you add multiple marketplaces,
+                list them in order of preference and availability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Short answers up front. Details when you open a question.</p>
+        </div>
+
+        <details>
+          <summary>
+            What is the ayanamsa used?
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <p>Mean Chitrapaksha Ayanamsa (as stated on the cover).</p>
+        </details>
+
+        <details>
+          <summary>
+            Are values referenced to IST?
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <p>Yes—tables are consistently referenced to IST, aligning daily work with local time practice.</p>
+        </details>
+
+        <details>
+          <summary>
+            Can I use this as my primary yearly desk reference?
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <p>That’s the intent: a single integrated volume for daily ephemeris checks, Panchanga elements, and timing aids.</p>
+        </details>
+
+        <details>
+          <summary>
+            Does this website track visitors or collect emails?
+            <span class="chev" aria-hidden="true">⌄</span>
+          </summary>
+          <p>
+            This template does not include analytics, cookies, or email capture.
+            If you later add tracking, publish a privacy notice and obtain required consent per your jurisdiction.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot-grid">
+        <div class="fineprint">
+          <div class="brand" style="margin-bottom: 10px;">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Sagar Ephemeris 2026</span>
+          </div>
+          <div>
+            © <span id="year"></span> Sandeep Venkatesh. All rights reserved.<br/>
+            <span style="color: var(--muted2)">
+              This page is a marketing landing page template. Replace placeholder purchase links and any claims with your verified details.
+            </span>
+          </div>
+        </div>
+
+        <div style="display:grid; gap: 10px;">
+          <a href="#top" class="ghost" style="justify-content:center;">Back to top</a>
+          <div style="color: var(--muted2); font-size: 13px;">
+            Contact: add your public email / publisher contact here.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Minimal JS, no tracking. (Doherty Threshold: quick UI response)
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
