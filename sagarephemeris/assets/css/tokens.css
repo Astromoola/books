@@ -1,0 +1,50 @@
+:root{
+  /* Palette extracted from cover (deep teal, midnight blue, cosmic gold, stardust glow) */
+  --bg: #061F27;              /* midnight teal */
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.04);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --muted2: rgba(255,255,255,.58);
+  --stroke: rgba(255,255,255,.14);
+
+  --teal: #0E3C4A;
+  --midnight: #072B36;
+  --gold: #D8B15A;
+  --gold2: #F2D58B;
+  --stardust: #E7F5FF;
+
+  --shadow: 0 28px 80px rgba(0,0,0,.50);
+  --shadow-soft: 0 20px 64px rgba(0,0,0,.35);
+  --shadow-card: 0 18px 50px rgba(0,0,0,.28);
+  --glass-tint-top: rgba(7,43,54,.55);
+  --glass-tint-bot: rgba(14,60,74,.28);
+  --stroke-soft: rgba(231,245,255,.12);
+
+  /* Safe-area helpers (iOS) */
+  --safe-b: env(safe-area-inset-bottom);
+  --safe-t: env(safe-area-inset-top);
+
+  /* Golden ratio scale */
+  --phi: 1.618;
+  --space-0: 8px;
+  --space-1: 13px;   /* ~8*phi */
+  --space-2: 21px;   /* ~13*phi */
+  --space-3: 34px;   /* ~21*phi */
+  --space-4: 55px;   /* ~34*phi */
+  --space-5: 89px;   /* ~55*phi */
+  --space-6: 144px;  /* ~89*phi */
+
+  --radius-sm: 14px;
+  --radius: 22px;
+  --radius-lg: 30px;
+
+  --max: 1160px;
+  --max-narrow: 820px;
+
+  --h1: clamp(40px, 4.2vw, 64px);
+  --h2: clamp(26px, 2.4vw, 36px);
+  --h3: clamp(18px, 1.5vw, 22px);
+  --p:  clamp(16px, 1.25vw, 18px);
+  --small: 13px;
+}
