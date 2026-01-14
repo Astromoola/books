@@ -1,24 +1,45 @@
+html{ background-color: var(--bg, #04181f); }
 body{
   position: relative;
   z-index: 0;
+  isolation: isolate;
 }
 
-/* Subtle micro-grain to soften gradient banding */
-body::after{
+/* Cinematic starfield + micro-grain */
+body::before{
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
   background-image:
-    radial-gradient(1px 1px at 20% 30%, rgba(231,245,255,.08), transparent 60%),
-    radial-gradient(1px 1px at 80% 60%, rgba(7,43,54,.10), transparent 60%),
-    radial-gradient(1px 1px at 40% 80%, rgba(14,60,74,.08), transparent 60%),
-    radial-gradient(1px 1px at 60% 20%, rgba(231,245,255,.07), transparent 60%);
-  background-size: 3px 3px, 4px 4px, 3px 3px, 5px 5px;
-  background-position: 0 0, 1px 2px, 2px 1px, 3px 4px;
-  opacity: .12;
-  mix-blend-mode: soft-light;
+    radial-gradient(1px 1px at 20% 30%, rgba(231,245,255,.55), transparent 60%),
+    radial-gradient(1px 1px at 80% 20%, rgba(231,245,255,.35), transparent 60%),
+    radial-gradient(1px 1px at 60% 70%, rgba(216,177,90,.25), transparent 60%),
+    radial-gradient(1px 1px at 30% 80%, rgba(231,245,255,.30), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(231,245,255,.03), rgba(231,245,255,.03) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(7,43,54,.04), rgba(7,43,54,.04) 1px, transparent 1px, transparent 4px);
+  background-size: 240px 240px, 300px 300px, 360px 360px, 420px 420px, 3px 3px, 4px 4px;
+  background-position: 0 0, 60px 20px, 120px 80px, 180px 140px, 0 0, 1px 2px;
+  opacity: var(--bg-stars-opacity);
+  filter: blur(0.2px);
+  transform: translateZ(0);
+}
+
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(80% 70% at 85% 30%, var(--bg-glow-warm), transparent 60%),
+    radial-gradient(80% 80% at 15% 40%, var(--bg-glow-cool), transparent 60%),
+    radial-gradient(120% 90% at 50% -10%, rgba(231,245,255,.08), transparent 60%),
+    radial-gradient(140% 120% at 50% 120%, rgba(6,31,39,.65), transparent 72%);
+  opacity: var(--bg-glow-opacity);
+  filter: blur(0.6px);
+  transform: translateZ(0);
 }
 
 /* Atmospheric veils to blend section transitions */
@@ -35,9 +56,9 @@ section::before{
     radial-gradient(140% 120% at 50% -20%, rgba(7,43,54,.40), transparent 62%),
     radial-gradient(140% 120% at 50% 120%, rgba(14,60,74,.28), transparent 62%),
     linear-gradient(180deg, rgba(6,31,39,.00), rgba(6,31,39,.12) 50%, rgba(6,31,39,.00));
-  opacity: .4;
-  -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
-  mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+  opacity: .32;
+  -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
   pointer-events: none;
   z-index: 0;
 }
@@ -45,4 +66,9 @@ section::before{
 section > *{
   position: relative;
   z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  body::before,
+  body::after{ filter: none; }
 }

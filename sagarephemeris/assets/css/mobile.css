@@ -63,7 +63,7 @@
   .lead{ max-width: 60ch; }
 
   section::before{ opacity: .22; inset: -24px 0; }
-  body::after{ opacity: .08; }
+  body::after{ opacity: var(--bg-glow-opacity); }
   details{ padding: 14px 16px; }
 
   .cover-card{
@@ -71,5 +71,12 @@
   }
   .cover-card img{
     margin: 10px auto 6px;
+  }
+}
+
+@media (max-width: 640px){
+  :root{
+    --bg-stars-opacity: 0.045;
+    --bg-glow-opacity: 0.14;
   }
 }

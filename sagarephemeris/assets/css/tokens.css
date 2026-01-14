@@ -20,6 +20,10 @@
   --glass-tint-top: rgba(7,43,54,.55);
   --glass-tint-bot: rgba(14,60,74,.28);
   --stroke-soft: rgba(231,245,255,.12);
+  --bg-stars-opacity: 0.06;
+  --bg-glow-opacity: 0.18;
+  --bg-glow-warm: rgba(201, 155, 78, 0.55);
+  --bg-glow-cool: rgba(38, 120, 140, 0.45);
 
   /* Safe-area helpers (iOS) */
   --safe-b: env(safe-area-inset-bottom);
