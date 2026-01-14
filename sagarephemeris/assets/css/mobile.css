@@ -53,6 +53,7 @@
   .strip{ padding: var(--space-3); }
   .card{ padding: var(--space-2); border-radius: var(--radius); }
   .cover-card{ border-radius: var(--radius-lg); }
+  .cover-card img{ height: clamp(280px, 72vw, 440px); }
 
   /* Make CTAs easier to tap and keep them above browser chrome */
   .hero-actions{ gap: 12px; }
@@ -64,4 +65,11 @@
   section::before{ opacity: .22; inset: -24px 0; }
   body::after{ opacity: .08; }
   details{ padding: 14px 16px; }
+
+  .cover-card{
+    padding: 22px 18px 26px;
+  }
+  .cover-card img{
+    margin: 10px auto 6px;
+  }
 }
