@@ -178,6 +178,26 @@ h1{
   color: var(--muted2);
   font-size: 13px;
 }
+.cover-meta .isbn{
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  letter-spacing: 0.15px;
+  opacity: 0.84;
+  font-weight: 560;
+  transform: translateY(-2px);
+}
+.cover-meta .isbn-label{
+  opacity: 0.65;
+  font-weight: 520;
+}
+.cover-meta .isbn-sep{
+  opacity: 0.55;
+  margin: 0 6px 0 2px;
+}
+.cover-meta .isbn-value{
+  opacity: 0.92;
+  font-weight: 620;
+}
 .pill{
   padding: 8px 10px;
   border-radius: 999px;
@@ -233,6 +253,50 @@ h2{
   letter-spacing: -0.01em;
 }
 .card p{ margin: 0; color: var(--muted); font-size: 15px; }
+.publisher-block{
+  margin-top: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.publisher-name{
+  color: var(--text);
+  font-weight: 650;
+}
+.info-heading{
+  margin: 0 0 8px;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.info-rows{
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.info-row{
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+.info-key{
+  color: var(--muted);
+}
+.info-val{
+  color: var(--text);
+  font-weight: 650;
+  text-align: right;
+  text-decoration: none;
+}
+.info-divider{
+  height: 1px;
+  background: linear-gradient(90deg, rgba(231,245,255,.08), rgba(231,245,255,.02));
+  margin: var(--space-2) 0;
+}
+.note-muted{
+  margin: 0;
+  color: var(--muted2);
+  font-size: 13px;
+}
 
 .icon{
   width: 44px; height: 44px; border-radius: 16px;
