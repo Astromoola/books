@@ -63,6 +63,9 @@
   /* Improve readability inside glass panels */
   .lead{ max-width: 60ch; }
 
+  .foot-grid{ grid-template-columns: 1fr; }
+  .foot-actions{ align-items: flex-start; text-align: left; }
+
   section::before{ opacity: .22; inset: -24px 0; }
   body::after{ opacity: var(--bg-glow-opacity); }
   details{ padding: 14px 16px; }
