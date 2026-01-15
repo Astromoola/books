@@ -48,6 +48,7 @@
 
   header.hero{ padding: var(--space-4) 0 var(--space-4); }
   section{ padding: var(--space-4) 0; }
+  .hero-grid > .cover-card{ order: -1; }
 
   /* Cards/strips: reduce heavy glass + oversized padding */
   .strip{ padding: var(--space-3); }
