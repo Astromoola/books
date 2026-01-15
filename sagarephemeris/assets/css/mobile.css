@@ -29,8 +29,8 @@
   .kicker{ padding: 10px 12px; font-size: 13px; gap: 10px; }
   .lead{ font-size: 16px; line-height: 1.55; }
   .hero-actions{ margin-top: 18px; }
-  .micro{ margin-top: 16px; gap: 10px; }
-  .micro > span{ padding: 10px 12px; font-size: 14px; }
+  .micro{ margin-top: 16px; gap: 8px; }
+  .micro > span{ padding: 9px 11px; font-size: 14px; }
 
   /* Mobile ergonomics: tighter rhythm + safer bottom spacing */
   body{ padding-bottom: var(--safe-b); }

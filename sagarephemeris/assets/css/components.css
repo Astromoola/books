@@ -38,7 +38,7 @@
   background: linear-gradient(180deg, rgba(216,177,90,.18), rgba(216,177,90,.08));
   color: var(--text);
   font-weight: 600;
-  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  transition: transform 120ms cubic-bezier(.2,.8,.2,1), box-shadow 140ms cubic-bezier(.2,.8,.2,1), background-color 140ms, border-color 140ms, color 140ms;
   white-space: nowrap;
 }
 .cta:hover{
@@ -49,7 +49,7 @@
 
 /* ---------- Hero (Fitts + Von Restorff + Visual Hierarchy) ---------- */
 header.hero{
-  padding: var(--space-6) 0 var(--space-4);
+  padding: var(--space-6) 0 var(--space-3);
 }
 .hero-grid{
   display: grid;
@@ -80,6 +80,13 @@ h1{
   max-width: 62ch;
   margin: 0 0 var(--space-3);
 }
+.meta-note{
+  font-size: 13px;
+  color: var(--muted2);
+  margin: var(--space-2) 0 0;
+  line-height: 1.5;
+  max-width: 62ch;
+}
 .hero-actions{
   display: flex; flex-wrap: wrap; align-items: center;
   gap: var(--space-2);
@@ -93,21 +100,23 @@ h1{
   background: rgba(255,255,255,.04);
   color: var(--text);
   font-weight: 600;
+  transition: transform 120ms cubic-bezier(.2,.8,.2,1), box-shadow 140ms cubic-bezier(.2,.8,.2,1), background-color 140ms, border-color 140ms, color 140ms;
 }
 .ghost:hover{ background: rgba(255,255,255,.06); }
 
 .micro{
-  display: flex; flex-wrap: wrap; gap: 10px 14px;
+  display: flex; flex-wrap: wrap; gap: 9px 12px;
   margin-top: var(--space-3);
   color: var(--muted2);
   font-size: 13px;
 }
 .micro > span{
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 10px;
+  padding: 7px 10px;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.03);
   border-radius: 999px;
+  letter-spacing: 0.03em;
 }
 .check{
   width: 16px; height: 16px;
@@ -119,7 +128,7 @@ h1{
   box-shadow: 0 0 18px rgba(216,177,90,.35), inset 0 0 6px rgba(231,245,255,.18);
   flex: 0 0 auto;
 }
-.check svg{ width: 12px; height: 12px; color: rgba(7,43,54,.9); }
+.check svg{ width: 16px; height: 16px; color: rgba(231,245,255,.88); }
 
 .cover-card{
   position: relative;
@@ -184,6 +193,9 @@ section{
   padding: var(--space-5) 0;
   /* Prevent bottom browser UI from covering content on mobile */
   scroll-margin-top: 90px;
+}
+.hero + section{
+  padding-top: var(--space-4);
 }
 .section-head{
   display: grid;
@@ -259,8 +271,10 @@ h2{
 }
 .bullets .mark{
   width: 18px; height: 18px; border-radius: 999px;
-  background: rgba(231,245,255,.08);
-  border: 1px solid rgba(231,245,255,.20);
+  background: radial-gradient(circle at 35% 35%, rgba(242,213,139,.35), rgba(216,177,90,.12) 60%, rgba(7,43,54,.35) 100%);
+  border: 1px solid rgba(216,177,90,.28);
+  box-shadow: 0 0 16px rgba(216,177,90,.18), inset 0 0 6px rgba(231,245,255,.18);
+  color: var(--stardust);
   display: grid; place-items: center;
   margin-top: 2px;
 }
